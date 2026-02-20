@@ -13,15 +13,17 @@
       font-family:'Poppins',sans-serif;
       display:flex;
       justify-content:center;
-      align-items:center;
+      align-items:flex-start;
       color:#fff;
-      overflow:hidden;
+      overflow-x:hidden;
+      overflow-y:auto;
+      padding:20px 10px;
     }
     .card{
       background:rgba(255,255,255,0.12);
       backdrop-filter:blur(14px);
-      border-radius:25px;
-      padding:40px 30px;
+      border-radius:22px;
+      padding:25px 18px;
       max-width:800px;
       width:100%;
       text-align:center;
@@ -30,7 +32,7 @@
     }
     h1{
       font-family:'Great Vibes',cursive;
-      font-size:3.5rem;
+      font-size:3.2rem;
       margin-bottom:10px;
     }
     .subtitle{
@@ -42,7 +44,8 @@
       width:100%;
       height:80px;
       border-radius:12px;
-      margin-bottom:25px;
+      margin-bottom:15px;
+      border:none;
     }
     .poem{
       font-size:1.05rem;
@@ -58,7 +61,10 @@
       font-size:0.85rem;
       opacity:0.8;
     }
-    @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeIn{
+      from{opacity:0;transform:translateY(20px)}
+      to{opacity:1;transform:translateY(0)}
+    }
     .confetti{
       position:fixed;
       width:8px;
@@ -67,9 +73,11 @@
       animation:fall linear infinite;
       top:-10px;
       opacity:0.8;
+      z-index:1;
     }
-    @keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
-  
+    @keyframes fall{
+      to{transform:translateY(110vh) rotate(360deg);opacity:0}
+    }
     .surprise-btn{
       background:linear-gradient(135deg,#ff6a88,#ff99ac);
       border:none;
@@ -82,42 +90,83 @@
       box-shadow:0 8px 20px rgba(0,0,0,.3);
       transition:transform .2s ease, box-shadow .2s ease;
     }
-    .surprise-btn:hover{transform:scale(1.05);box-shadow:0 12px 28px rgba(0,0,0,.4)}
-
+    .surprise-btn:hover{
+      transform:scale(1.05);
+      box-shadow:0 12px 28px rgba(0,0,0,.4)
+    }
     .popup{
-      position:fixed; inset:0; background:rgba(0,0,0,.6);
-      display:none; justify-content:center; align-items:center; z-index:2000;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.6);
+      display:none;
+      justify-content:center;
+      align-items:center;
+      z-index:2000;
+      padding:15px;
     }
     .popup-card{
-      background:rgba(255,255,255,.15); backdrop-filter:blur(14px);
-      padding:35px 30px; border-radius:22px; text-align:center; max-width:420px;
+      background:rgba(255,255,255,.15);
+      backdrop-filter:blur(14px);
+      padding:25px 18px;
+      border-radius:22px;
+      text-align:center;
+      max-width:420px;
+      width:100%;
       animation:fadeIn .5s ease;
     }
-    .popup-card h2{font-family:'Great Vibes',cursive;font-size:2.4rem;color:#fff;margin-bottom:15px}
-    .popup-card p{font-size:1.05rem;line-height:1.7;margin-bottom:20px}
-    .close-btn{background:#ff6a88;border:none;padding:8px 22px;border-radius:20px;color:#fff;cursor:pointer}
+    .popup-card h2{
+      font-family:'Great Vibes',cursive;
+      font-size:2.4rem;
+      color:#fff;
+      margin-bottom:15px
+    }
+    .popup-card p{
+      font-size:1.05rem;
+      line-height:1.7;
+      margin-bottom:20px
+    }
+    .close-btn{
+      background:#ff6a88;
+      border:none;
+      padding:8px 22px;
+      border-radius:20px;
+      color:#fff;
+      cursor:pointer
+    }
+
+    @media (max-width:600px){
+      h1{font-size:2.3rem;}
+      .poem{font-size:.95rem;}
+      .wish{font-size:1rem;}
+    }
   </style>
+
   <script>
-    function showSecret(){document.getElementById('popup').style.display='flex';}
-    function closeSecret(){document.getElementById('popup').style.display='none';}
-  
+    function showSecret(){
+      document.getElementById('popup').style.display='flex';
+    }
+    function closeSecret(){
+      document.getElementById('popup').style.display='none';
+    }
+
     function startMusic(){
-      const iframe = document.querySelector('#music-container iframe');
-      const src = iframe.getAttribute('src');
+      const iframe=document.querySelector('#music-container iframe');
+      let src=iframe.getAttribute('src');
       if(!src.includes('autoplay=1')){
-        iframe.setAttribute('src', src.replace('autoplay=0','autoplay=1'));
+        iframe.setAttribute('src',src.replace('autoplay=0','autoplay=1'));
       }
     }
   </script>
 </head>
 <body>
+
   <div class="card">
     <h1>Happy 18th Birthday Loyce 🎉</h1>
     <div class="subtitle">A celebration of you, your light, and your beautiful journey</div>
 
     <div id="music-container" onclick="startMusic()" style="cursor:pointer">
-    <iframe src="https://www.youtube.com/embed/ru0K8uYEZWw?autoplay=1&loop=1&playlist=ru0K8uYEZWw" title="Birthday Song"></iframe>
-    <small>🎵 Tap here to play music if it doesn't start automatically</small>
+      <iframe src="https://www.youtube.com/embed/ru0K8uYEZWw?autoplay=1&loop=1&playlist=ru0K8uYEZWw" title="Birthday Song"></iframe>
+      <small>🎵 Tap here to play music if it doesn't start automatically</small>
     </div>
 
     <div class="wish">
@@ -155,18 +204,6 @@ May love and light forever make you whole. ✨
     <footer>Made with 💖 just for you</footer>
   </div>
 
-<script>
-  function createConfetti(){
-    const conf=document.createElement('div');
-    conf.className='confetti';
-    conf.style.left=Math.random()*100+'vw';
-    conf.style.background=`hsl(${Math.random()*360},100%,75%)`;
-    conf.style.animationDuration=(3+Math.random()*4)+'s';
-    document.body.appendChild(conf);
-    setTimeout(()=>conf.remove(),7000);
-  }
-  setInterval(createConfetti,120);
-</script>
   <div class="popup" id="popup">
     <div class="popup-card">
       <h2>Loyce 💖</h2>
@@ -178,5 +215,19 @@ May love and light forever make you whole. ✨
       <button class="close-btn" onclick="closeSecret()">Close</button>
     </div>
   </div>
+
+<script>
+  function createConfetti(){
+    const conf=document.createElement('div');
+    conf.className='confetti';
+    conf.style.left=Math.random()*100+'vw';
+    conf.style.background=`hsl(${Math.random()*360},100%,75%)`;
+    conf.style.animationDuration=(3+Math.random()*4)+'s';
+    document.body.appendChild(conf);
+    setTimeout(()=>conf.remove(),7000);
+  }
+  setInterval(createConfetti,140);
+</script>
+
 </body>
 </html>
