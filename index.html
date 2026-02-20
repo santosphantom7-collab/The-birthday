@@ -1,1 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 18th Birthday Loyce 🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body{
+      margin:0;
+      min-height:100vh;
+      background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
+      font-family:'Poppins',sans-serif;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:#fff;
+      overflow:hidden;
+    }
+    .card{
+      background:rgba(255,255,255,0.12);
+      backdrop-filter:blur(14px);
+      border-radius:25px;
+      padding:40px 30px;
+      max-width:800px;
+      width:100%;
+      text-align:center;
+      box-shadow:0 20px 50px rgba(0,0,0,0.35);
+      animation:fadeIn 1.5s ease;
+    }
+    h1{
+      font-family:'Great Vibes',cursive;
+      font-size:3.5rem;
+      margin-bottom:10px;
+    }
+    .subtitle{
+      font-size:1rem;
+      margin-bottom:25px;
+      opacity:0.95;
+    }
+    iframe{
+      width:100%;
+      height:80px;
+      border-radius:12px;
+      margin-bottom:25px;
+    }
+    .poem{
+      font-size:1.05rem;
+      line-height:1.8;
+      white-space:pre-line;
+    }
+    .wish{
+      margin-bottom:20px;
+      font-size:1.1rem;
+    }
+    footer{
+      margin-top:25px;
+      font-size:0.85rem;
+      opacity:0.8;
+    }
+    @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .confetti{
+      position:fixed;
+      width:8px;
+      height:8px;
+      background:#fff;
+      animation:fall linear infinite;
+      top:-10px;
+      opacity:0.8;
+    }
+    @keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
+  
+    .surprise-btn{
+      background:linear-gradient(135deg,#ff6a88,#ff99ac);
+      border:none;
+      padding:12px 28px;
+      border-radius:30px;
+      font-size:1rem;
+      color:#fff;
+      cursor:pointer;
+      margin-bottom:25px;
+      box-shadow:0 8px 20px rgba(0,0,0,.3);
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .surprise-btn:hover{transform:scale(1.05);box-shadow:0 12px 28px rgba(0,0,0,.4)}
 
+    .popup{
+      position:fixed; inset:0; background:rgba(0,0,0,.6);
+      display:none; justify-content:center; align-items:center; z-index:2000;
+    }
+    .popup-card{
+      background:rgba(255,255,255,.15); backdrop-filter:blur(14px);
+      padding:35px 30px; border-radius:22px; text-align:center; max-width:420px;
+      animation:fadeIn .5s ease;
+    }
+    .popup-card h2{font-family:'Great Vibes',cursive;font-size:2.4rem;color:#fff;margin-bottom:15px}
+    .popup-card p{font-size:1.05rem;line-height:1.7;margin-bottom:20px}
+    .close-btn{background:#ff6a88;border:none;padding:8px 22px;border-radius:20px;color:#fff;cursor:pointer}
+  </style>
+  <script>
+    function showSecret(){document.getElementById('popup').style.display='flex';}
+    function closeSecret(){document.getElementById('popup').style.display='none';}
+  
+    function startMusic(){
+      const iframe = document.querySelector('#music-container iframe');
+      const src = iframe.getAttribute('src');
+      if(!src.includes('autoplay=1')){
+        iframe.setAttribute('src', src.replace('autoplay=0','autoplay=1'));
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="card">
+    <h1>Happy 18th Birthday Loyce 🎉</h1>
+    <div class="subtitle">A celebration of you, your light, and your beautiful journey</div>
+
+    <div id="music-container" onclick="startMusic()" style="cursor:pointer">
+    <iframe src="https://www.youtube.com/embed/ru0K8uYEZWw?autoplay=1&loop=1&playlist=ru0K8uYEZWw" title="Birthday Song"></iframe>
+    <small>🎵 Tap here to play music if it doesn't start automatically</small>
+    </div>
+
+    <div class="wish">
+      Today you turn 18 — a powerful milestone and a beautiful beginning. 🌸
+      May your life be filled with joy, love, courage, and endless dreams.
+      May every step you take lead you closer to happiness and purpose.
+    </div>
+
+    <button class="surprise-btn" onclick="showSecret()">🎁 Click for a Surprise 🎁</button>
+
+    <div class="poem">
+🌹 For Loyce, at 18 🌹
+
+Eighteen candles, softly glowing,
+Light the road your life is showing.
+Each small flame, a dream, a prayer,
+A promise of the love you’ll share.
+
+You carry kindness in your smile,
+And gentle strength in perfect style.
+Your laughter heals, your presence bright,
+A warming spark in darkest night.
+
+At eighteen, life begins anew,
+With endless skies and hopes so true.
+Go chase your dreams, don’t be afraid,
+Your destiny is beautifully made.
+
+So rise, dear Loyce, and touch the stars,
+This world is yours, just as you are.
+Happy Birthday, beautiful soul,
+May love and light forever make you whole. ✨
+    </div>
+
+    <footer>Made with 💖 just for you</footer>
+  </div>
+
+<script>
+  function createConfetti(){
+    const conf=document.createElement('div');
+    conf.className='confetti';
+    conf.style.left=Math.random()*100+'vw';
+    conf.style.background=`hsl(${Math.random()*360},100%,75%)`;
+    conf.style.animationDuration=(3+Math.random()*4)+'s';
+    document.body.appendChild(conf);
+    setTimeout(()=>conf.remove(),7000);
+  }
+  setInterval(createConfetti,120);
+</script>
+  <div class="popup" id="popup">
+    <div class="popup-card">
+      <h2>Loyce 💖</h2>
+      <p>
+        You are deeply loved, endlessly valued, and beautifully special. 🌸<br><br>
+        May this new chapter bring you joy, success, and unforgettable moments.
+        Never forget how amazing you truly are. ✨
+      </p>
+      <button class="close-btn" onclick="closeSecret()">Close</button>
+    </div>
+  </div>
+</body>
+</html>
